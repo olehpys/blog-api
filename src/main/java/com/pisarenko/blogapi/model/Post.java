@@ -1,13 +1,23 @@
 package com.pisarenko.blogapi.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "posts")
 public class Post {
 
+    @Id
+    @Column(name = "id")
     private long id;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "content")
     private String content;
 
+    @Column(name = "post_author")
+    @Enumerated(EnumType.STRING)
     private User author;
 
     public Post() {
