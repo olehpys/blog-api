@@ -8,6 +8,7 @@ public class Post {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private long id;
 
     @Column(name = "title")
@@ -23,8 +24,7 @@ public class Post {
     public Post() {
     }
 
-    public Post(long id, String title, String content, User author) {
-        this.id = id;
+    public Post(String title, String content, User author) {
         this.title = title;
         this.content = content;
         this.author = author;

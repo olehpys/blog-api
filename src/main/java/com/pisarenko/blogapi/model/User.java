@@ -30,8 +30,7 @@ public class User {
     public User() {
     }
 
-    public User(long id, String username, String password, UserRole role, List<Post> userPosts) {
-        this.id = id;
+    public User(String username, String password, UserRole role, List<Post> userPosts) {
         this.username = username;
         this.password = password;
         this.role = role;
