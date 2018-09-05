@@ -42,7 +42,7 @@ public class PostServiceTest {
     public void getPostByIdTest() {
         Mockito.when(postRepository.findPostById(1L)).thenReturn(Collections.singletonList(post));
 
-        List<Post> postList = postService.getPostById(1L);
+        List<Post> postList  = postService.getPostById(1L);
 
         Assert.assertEquals(Collections.singletonList(post).get(0), postList.get(0));
     }
