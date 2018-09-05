@@ -16,8 +16,8 @@ public class Post {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "post_author")
-    @Enumerated(EnumType.STRING)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
     private User author;
 
     public Post() {
