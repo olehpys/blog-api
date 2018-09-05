@@ -8,7 +8,7 @@ public interface PostService {
 
     Post createPost(Post post);
 
-    void editPost(Post post);
+    Post editPost(Post post);
 
     void deletePost(long id);
 
