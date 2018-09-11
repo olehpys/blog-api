@@ -20,3 +20,40 @@ If you use the Spring Boot Maven or Gradle plugins to create an executable jar, 
 ```
 $ java -jar target/blogapi-0.0.1-SNAPSHOT.jar
 ```
+
+## cURL requests examples
+
+Add new user:
+```
+curl --data "username={username}&password={password}&role=PUBLISHER" http://localhost:8080/users
+```
+
+Add blog post:
+```
+curl -u username:password -d "title={title}&content={content}" http://localhost:8080/posts/add
+```
+
+Edit blog post:
+```
+curl -u username:password -d "title={title}&content={content}" http://localhost:8080/posts/{id}/edit
+```
+
+Delete blog post:
+```
+curl -u username:password http://localhost:8080/posts/{id}/delete
+```
+
+Get a particular blog post:
+```
+curl -u username:password http://localhost:8080/posts/{id}
+```
+
+Get the list of all blog posts:
+```
+curl -u username:password http://localhost:8080/posts/all
+```
+
+Get the list of all authorized user's blog posts:
+```
+curl -u username:password http://localhost:8080/posts/all/own
+```
