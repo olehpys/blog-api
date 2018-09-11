@@ -68,7 +68,7 @@ public class PostController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/all/author/{id}", method = RequestMethod.GET)
     ResponseEntity<List<Post>> getAllAuthorPosts(@PathVariable long id) {
-        List<Post> allAuthorPosts = postService.getAllAuthorPosts(id);
+        List<Post> allAuthorPosts = postService.getAllPostsByAuthorId(id);
         return ResponseEntity.ok(allAuthorPosts);
     }
 

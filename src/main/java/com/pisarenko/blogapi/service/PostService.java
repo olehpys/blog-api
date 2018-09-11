@@ -17,6 +17,6 @@ public interface PostService {
 
     List<Post> getAllPosts();
 
-    List<Post> getAllAuthorPosts(long id);
+    List<Post> getAllPostsByAuthorId(long id);
 
 }
