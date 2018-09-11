@@ -12,7 +12,7 @@ Implemented REST resources:
 ### Running from an IDE
 You can run a Website Monitoring Tool application from your IDE as a simple Java application. However, you first need to import project. Import steps vary depending on your IDE and build system. Most IDEs can import Maven projects directly. 
 
-If you cannot directly import your project into your IDE, you may be able to generate IDE metadata by using a build plugin. Maven includes plugins for Eclipse and IDEA. Gradle offers plugins for various IDEs.
+If you cannot directly import your project into your IDE, you may be able to generate IDE metadata by using a build plugin. Maven includes plugins for Eclipse and IDEA.
 
 ### Running as a Packaged Application
 
