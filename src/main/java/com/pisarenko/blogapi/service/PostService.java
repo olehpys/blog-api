@@ -1,12 +1,13 @@
 package com.pisarenko.blogapi.service;
 
 import com.pisarenko.blogapi.model.Post;
+import com.pisarenko.blogapi.model.User;
 
 import java.util.List;
 
 public interface PostService {
 
-    Post createPost(Post post);
+    Post createPost(Post post, User user);
 
     Post editPost(Post post);
 

@@ -1,6 +1,7 @@
 package com.pisarenko.blogapi.service.impl;
 
 import com.pisarenko.blogapi.model.Post;
+import com.pisarenko.blogapi.model.User;
 import com.pisarenko.blogapi.repository.PostRepository;
 import com.pisarenko.blogapi.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post createPost(Post post) {
+    public Post createPost(Post post, User user) {
+        post.setAuthor(user);
         return postRepository.save(post);
     }
 
