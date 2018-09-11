@@ -4,6 +4,7 @@ import com.pisarenko.blogapi.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -40,7 +41,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
+                .csrf().disable()
                 .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/posts")
+                .authenticated()
+                .and().authorizeRequests()
                 .antMatchers("/posts/**")
                 .authenticated()
                 .and().httpBasic();
@@ -51,7 +56,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity webSecurity) {
 
         webSecurity
-                .ignoring().antMatchers("/users").antMatchers("/h2/**");
+                .ignoring()
+                .antMatchers("/users")
+                .antMatchers("/h2/**");
 
     }
 
