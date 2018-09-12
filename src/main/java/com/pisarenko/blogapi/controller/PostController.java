@@ -28,7 +28,7 @@ public class PostController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     ResponseEntity<Post> createPost(@AuthenticationPrincipal Principal principal, Post post) {
         User user = userService.getUserByUsername(principal.getName());
         Post createdPost = postService.createPost(post, user);
