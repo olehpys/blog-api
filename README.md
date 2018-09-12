@@ -30,7 +30,7 @@ curl --data "username={username}&password={password}&role=PUBLISHER" http://loca
 
 Add blog post:
 ```
-curl -u username:password -d "title={title}&content={content}" http://localhost:8080/posts/add
+curl -u username:password -d "title={title}&content={content}" http://localhost:8080/posts
 ```
 
 Edit blog post:
