@@ -1,6 +1,6 @@
-package com.pisarenko.blogapi.service;
+package com.pysarenko.blog.service;
 
-import com.pisarenko.blogapi.model.User;
+import com.pysarenko.blog.model.User;
 
 public interface UserService {
 

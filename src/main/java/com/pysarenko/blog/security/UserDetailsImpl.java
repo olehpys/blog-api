@@ -1,6 +1,6 @@
-package com.pisarenko.blogapi.security;
+package com.pysarenko.blog.security;
 
-import com.pisarenko.blogapi.model.User;
+import com.pysarenko.blog.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

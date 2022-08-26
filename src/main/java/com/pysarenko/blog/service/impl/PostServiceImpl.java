@@ -1,9 +1,9 @@
-package com.pisarenko.blogapi.service.impl;
+package com.pysarenko.blog.service.impl;
 
-import com.pisarenko.blogapi.model.Post;
-import com.pisarenko.blogapi.model.User;
-import com.pisarenko.blogapi.repository.PostRepository;
-import com.pisarenko.blogapi.service.PostService;
+import com.pysarenko.blog.model.Post;
+import com.pysarenko.blog.model.User;
+import com.pysarenko.blog.repository.PostRepository;
+import com.pysarenko.blog.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

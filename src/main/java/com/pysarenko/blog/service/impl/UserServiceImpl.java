@@ -1,8 +1,8 @@
-package com.pisarenko.blogapi.service.impl;
+package com.pysarenko.blog.service.impl;
 
-import com.pisarenko.blogapi.model.User;
-import com.pisarenko.blogapi.repository.UserRepository;
-import com.pisarenko.blogapi.service.UserService;
+import com.pysarenko.blog.model.User;
+import com.pysarenko.blog.repository.UserRepository;
+import com.pysarenko.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

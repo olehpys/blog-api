@@ -1,7 +1,7 @@
-package com.pisarenko.blogapi.controller;
+package com.pysarenko.blog.controller;
 
-import com.pisarenko.blogapi.model.User;
-import com.pisarenko.blogapi.service.UserService;
+import com.pysarenko.blog.model.User;
+import com.pysarenko.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

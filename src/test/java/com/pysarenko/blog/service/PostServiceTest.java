@@ -1,11 +1,11 @@
-package com.pisarenko.blogapi.service;
+package com.pysarenko.blog.service;
 
 
-import com.pisarenko.blogapi.model.Post;
-import com.pisarenko.blogapi.model.User;
-import com.pisarenko.blogapi.model.UserRole;
-import com.pisarenko.blogapi.repository.PostRepository;
-import com.pisarenko.blogapi.service.impl.PostServiceImpl;
+import com.pysarenko.blog.model.Post;
+import com.pysarenko.blog.model.User;
+import com.pysarenko.blog.model.UserRole;
+import com.pysarenko.blog.repository.PostRepository;
+import com.pysarenko.blog.service.impl.PostServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

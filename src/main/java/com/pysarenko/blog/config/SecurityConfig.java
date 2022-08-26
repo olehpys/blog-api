@@ -1,6 +1,6 @@
-package com.pisarenko.blogapi.config;
+package com.pysarenko.blog.config;
 
-import com.pisarenko.blogapi.security.UserDetailsServiceImpl;
+import com.pysarenko.blog.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

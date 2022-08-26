@@ -1,7 +1,7 @@
-package com.pisarenko.blogapi.service;
+package com.pysarenko.blog.service;
 
-import com.pisarenko.blogapi.model.Post;
-import com.pisarenko.blogapi.model.User;
+import com.pysarenko.blog.model.Post;
+import com.pysarenko.blog.model.User;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package com.pisarenko.blogapi.security;
+package com.pysarenko.blog.security;
 
-import com.pisarenko.blogapi.model.User;
-import com.pisarenko.blogapi.repository.UserRepository;
+import com.pysarenko.blog.model.User;
+import com.pysarenko.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
