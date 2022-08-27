@@ -2,8 +2,7 @@ package com.pysarenko.blog.service;
 
 
 import com.pysarenko.blog.model.Post;
-import com.pysarenko.blog.model.User;
-import com.pysarenko.blog.model.UserRole;
+import com.pysarenko.blog.security.UserRole;
 import com.pysarenko.blog.repository.PostRepository;
 import com.pysarenko.blog.service.impl.PostServiceImpl;
 import org.junit.Assert;

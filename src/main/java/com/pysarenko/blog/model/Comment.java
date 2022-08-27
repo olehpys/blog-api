@@ -1,15 +1,14 @@
 package com.pysarenko.blog.model;
 
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,8 +19,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Getter
 @Setter
 @Entity
-@Table(name = "post")
-public class Post {
+@Table(name = "comment")
+public class Comment {
 
   @Id
   @GeneratedValue(generator = "uuid")
@@ -29,15 +28,13 @@ public class Post {
   @Column(name = "id", unique = true, nullable = false, updatable = false)
   private String id;
 
-  @Column(name = "title")
-  private String title;
-
-  @Column(name = "content")
+  @Column(name = "content", nullable = false)
   private String content;
 
-  @Column(name = "author_username")
-  private String authorUsername = "system";
+  @Column(name = "author_username", nullable = false)
+  private String authorUsername;
 
-  @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-  private List<Comment> comments;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "post_id", nullable = false)
+  private Post post;
 }
