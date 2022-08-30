@@ -40,7 +40,7 @@ public class PostServiceImpl implements PostService {
   @Transactional
   public PostDto editPost(String id, PostDto post) {
     var storedPost = postRepository.findById(id)
-        .filter(this::isPermitted)
+        .filter(this::userHasPermission)
         .orElseThrow();
 
     var postToUpdate = postMapper.updatePost(storedPost, post);
@@ -54,7 +54,7 @@ public class PostServiceImpl implements PostService {
   @Transactional
   public void deletePost(String id) {
     postRepository.findById(id)
-        .filter(this::isPermitted)
+        .filter(this::userHasPermission)
         .ifPresent(p -> {
           postRepository.deleteById(id);
           log.info("Deleted post with id: {} by user: {}", p.getId(), p.getAuthorUsername());
@@ -67,7 +67,7 @@ public class PostServiceImpl implements PostService {
     log.info("Retrieving post with id: {} for user: {}", id, getUsernameFromSecurityContext());
 
     return postRepository.findById(id)
-        .filter(this::isPermitted)
+        .filter(this::userHasPermission)
         .map(postMapper::toDto)
         .orElseThrow();
   }
@@ -86,7 +86,7 @@ public class PostServiceImpl implements PostService {
     };
   }
 
-  private boolean isPermitted(Post post) {
+  private boolean userHasPermission(Post post) {
     return post.getAuthorUsername().equals(getUsernameFromSecurityContext()) || isAdmin();
   }
 }
