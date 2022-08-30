@@ -1,6 +1,7 @@
 package com.pysarenko.blog.entity;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,6 +38,6 @@ public class Post {
   @Column(name = "author_username")
   private String authorUsername;
 
-  @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "post", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
   private List<Comment> comments;
 }
