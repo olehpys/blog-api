@@ -1,4 +1,11 @@
-# RESTful API for simple web blog
+# REST API service for simple blog
+
+## Introduction
+Service has 2 user roles: **PUBLISHER** and **ADMIN**. **PUBLISHER** can edit/delete only own posts and comments. **ADMIN** can do everything.
+
+Service has auth integration with AWS Cognito User Pool. User Pool should have custom user attribute called **role** with allowed values: **PUBLISHER** or **ADMIN**.
+
+All requests to blog API should contain **Authorization** header with **Bearer JWT** retrieved after user login in AWS Cognito.
 
 ## Post API
 
