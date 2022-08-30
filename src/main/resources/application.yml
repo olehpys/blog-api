@@ -1,26 +1,32 @@
-local:
-  server:
-    port: 8080
 spring:
-  h2:
-    console:
-      enabled: true
-      path: /h2
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          jwk-set-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}/.well-known/jwks.json
+          issuer-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}
   datasource:
-    url: jdbc:h2:mem:webblog;
-    username: root
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    hikari:
+      password: postgres
+      username: postgres
+      schema: blog_db
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     properties:
       hibernate:
-        show_sql: false
-        use_sql_comments: true
         format_sql: true
-  session:
-    store-type: jdbc
-    jdbc:
-      initialize-schema: always
+        show_sql: false
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    enabled: true
+    default-schema: blog_db
+
+aws:
+  region: ${AWS_REGION}
+  cognito:
+    user-pool-id: ${USER_POOL_ID}
