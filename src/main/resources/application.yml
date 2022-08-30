@@ -1,4 +1,10 @@
 spring:
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          jwk-set-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}/.well-known/jwks.json
+          issuer-uri: https://cognito-idp.${aws.region}.amazonaws.com/${aws.cognito.user-pool-id}
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
@@ -19,3 +25,8 @@ spring:
     change-log: classpath:/db/changelog/db.changelog-master.xml
     enabled: true
     default-schema: blog_db
+
+aws:
+  region: ${AWS_REGION}
+  cognito:
+    user-pool-id: ${USER_POOL_ID}
