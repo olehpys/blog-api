@@ -1,4 +1,4 @@
-package com.pysarenko.blog.model;
+package com.pysarenko.blog.entity;
 
 import java.util.List;
 import javax.persistence.Column;

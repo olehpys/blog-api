@@ -5,7 +5,7 @@ import static com.pysarenko.blog.security.utils.BlogSecurityUtils.isAdmin;
 
 import com.pysarenko.blog.dto.CommentDto;
 import com.pysarenko.blog.mapper.CommentMapper;
-import com.pysarenko.blog.model.Comment;
+import com.pysarenko.blog.entity.Comment;
 import com.pysarenko.blog.repository.CommentRepository;
 import com.pysarenko.blog.repository.PostRepository;
 import com.pysarenko.blog.service.CommentService;

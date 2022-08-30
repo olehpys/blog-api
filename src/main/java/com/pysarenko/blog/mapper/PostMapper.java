@@ -1,7 +1,7 @@
 package com.pysarenko.blog.mapper;
 
 import com.pysarenko.blog.dto.PostDto;
-import com.pysarenko.blog.model.Post;
+import com.pysarenko.blog.entity.Post;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

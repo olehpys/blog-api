@@ -1,7 +1,7 @@
 package com.pysarenko.blog.mapper;
 
 import com.pysarenko.blog.dto.CommentDto;
-import com.pysarenko.blog.model.Comment;
+import com.pysarenko.blog.entity.Comment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
