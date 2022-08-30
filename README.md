@@ -51,7 +51,6 @@ Create comment:
 POST /posts/{post-id}/comments
 
 {
-    "post_id": "post_id",
     "content": "content"
 }
 ```
