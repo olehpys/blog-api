@@ -1,59 +1,69 @@
 # RESTful API for simple web blog
 
-The application have one user role - PUBLISHER.
+## Post API
 
-Implemented REST resources:
-- Resource to authenticate a particular user.
-- Create, update, delete users and blog posts.
-- Get the list of all blog posts. Filter option to get only own author's posts.
-- Get a particular blog post by id.
-
-## Running application
-### Running from an IDE
-You can run a Website Monitoring Tool application from your IDE as a simple Java application. However, you first need to import project. Import steps vary depending on your IDE and build system. Most IDEs can import Maven projects directly. 
-
-If you cannot directly import your project into your IDE, you may be able to generate IDE metadata by using a build plugin. Maven includes plugins for Eclipse and IDEA.
-
-### Running as a Packaged Application
-
-If you use the Spring Boot Maven or Gradle plugins to create an executable jar, you can run your application using java -jar, as shown in the following example:
+Create post:
 ```
-$ java -jar target/blogapi-0.0.1-SNAPSHOT.jar
+POST /posts
+
+{
+    "title": "title",
+    "content": "content"
+}
 ```
 
-## cURL requests examples
+Update post:
+```
+PUT /posts/{id}
 
-Add new user:
-```
-curl --data "username={username}&password={password}&role=PUBLISHER" http://localhost:8080/users
-```
-
-Add blog post:
-```
-curl -u username:password -d "title={title}&content={content}" http://localhost:8080/posts
+{
+    "title": "title",
+    "content": "content"
+}
 ```
 
-Edit blog post:
+Get particular post:
 ```
-curl -u username:password -d "title={title}&content={content}" http://localhost:8080/posts/{id}/edit
-```
-
-Delete blog post:
-```
-curl -u username:password http://localhost:8080/posts/{id}/delete
+GET /posts/{id}
 ```
 
-Get a particular blog post:
+Get all posts:
 ```
-curl -u username:password http://localhost:8080/posts/{id}
-```
-
-Get the list of all blog posts:
-```
-curl -u username:password http://localhost:8080/posts/all
+GET /posts
 ```
 
-Get the list of all authorized user's blog posts:
+Delete post:
 ```
-curl -u username:password http://localhost:8080/posts/all/own
+DELETE /posts/{id}
+```
+
+## Comment API
+
+Create comment:
+```
+POST /posts/{post-id}/comments
+
+{
+    "post_id": "post_id",
+    "content": "content"
+}
+```
+
+Update comment partially:
+```
+PATCH /posts/{post-id}/comments/{comment-id}
+
+{
+    "content": "content"
+}
+```
+
+Get post comments:
+```
+GET /posts/{post-id}/comments
+```
+
+Delete comment:
+```
+DELETE /posts/{post-id}/comments/{comment-id}
 ```
