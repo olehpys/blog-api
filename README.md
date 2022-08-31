@@ -1,5 +1,7 @@
 # REST API service for simple blog
 
+[![blog-api](https://github.com/pisarenko/blog-api/actions/workflows/any_branch.yml/badge.svg?branch=master)](https://github.com/pisarenko/blog-api/actions/workflows/any_branch.yml)
+
 ## Introduction
 Service has 2 user roles: **PUBLISHER** and **ADMIN**. **PUBLISHER** can edit/delete only own posts and comments. **ADMIN** can do everything.
 
