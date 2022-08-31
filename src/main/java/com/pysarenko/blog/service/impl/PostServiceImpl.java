@@ -1,6 +1,6 @@
 package com.pysarenko.blog.service.impl;
 
-import static com.pysarenko.blog.security.utils.BlogSecurityUtils.getUserProfileFromSecurityContext;
+import static com.pysarenko.blog.security.utils.BlogSecurityUtils.getUserRoleFromSecurityContext;
 import static com.pysarenko.blog.security.utils.BlogSecurityUtils.getUsernameFromSecurityContext;
 import static com.pysarenko.blog.security.utils.BlogSecurityUtils.isAdmin;
 
@@ -76,7 +76,7 @@ public class PostServiceImpl implements PostService {
   @Transactional(readOnly = true)
   public Page<PostDto> getAllPosts(Pageable pageable) {
     log.info("Retrieving all posts for user: {}", getUsernameFromSecurityContext());
-    var userRole = getUserProfileFromSecurityContext().getRole();
+    var userRole = getUserRoleFromSecurityContext();
 
     return switch (userRole) {
       case ADMIN -> postRepository.findAll(pageable)

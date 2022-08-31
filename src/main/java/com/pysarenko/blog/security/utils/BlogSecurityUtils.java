@@ -21,6 +21,12 @@ public class BlogSecurityUtils {
     return userProfile.getUsername();
   }
 
+  public static UserRole getUserRoleFromSecurityContext() {
+    var userProfile = getUserProfileFromSecurityContext();
+
+    return userProfile.getRole();
+  }
+
   public static boolean isAdmin() {
     return UserRole.ADMIN.equals(getUserProfileFromSecurityContext().getRole());
   }
