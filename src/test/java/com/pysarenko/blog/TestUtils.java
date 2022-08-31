@@ -1,6 +1,8 @@
 package com.pysarenko.blog;
 
+import com.pysarenko.blog.dto.CommentDto;
 import com.pysarenko.blog.dto.PostDto;
+import com.pysarenko.blog.entity.Comment;
 import com.pysarenko.blog.entity.Post;
 import lombok.experimental.UtilityClass;
 
@@ -41,6 +43,29 @@ public class TestUtils {
         .title(title)
         .content(content)
         .authorUsername(authorUsername)
+        .build();
+  }
+
+  public static Comment buildComment(String id, String content, String authorUsername, Post post) {
+    return Comment.builder()
+        .id(id)
+        .content(content)
+        .authorUsername(authorUsername)
+        .post(post)
+        .build();
+  }
+
+  public static CommentDto buildCommentDto(String id, String content, String authorUsername) {
+    return CommentDto.builder()
+        .id(id)
+        .content(content)
+        .authorUsername(authorUsername)
+        .build();
+  }
+
+  public static CommentDto buildCommentDto(String content) {
+    return CommentDto.builder()
+        .content(content)
         .build();
   }
 }
