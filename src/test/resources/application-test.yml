@@ -1,0 +1,4 @@
+aws:
+  region: eu-central-1
+  cognito:
+    user-pool-id: eu-central-1_1JdsfgiI
