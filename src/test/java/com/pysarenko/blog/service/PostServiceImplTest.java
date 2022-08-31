@@ -29,6 +29,7 @@ import com.pysarenko.blog.service.impl.PostServiceImpl;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -53,10 +54,10 @@ public class PostServiceImplTest {
   @InjectMocks
   private PostServiceImpl postService;
 
-  protected static MockedStatic<BlogSecurityUtils> blogSecurityUtils;
+  private static MockedStatic<BlogSecurityUtils> blogSecurityUtils;
 
   @BeforeAll
-  public static void init() {
+  public static void beforeAll() {
     blogSecurityUtils = Mockito.mockStatic(BlogSecurityUtils.class);
     UserProfile userProfile = mock(UserProfile.class);
     blogSecurityUtils.when(BlogSecurityUtils::getUserProfileFromSecurityContext)
@@ -65,15 +66,20 @@ public class PostServiceImplTest {
         .thenReturn(TEST_USERNAME);
   }
 
+  @AfterAll
+  static void afterAll() {
+    blogSecurityUtils.close();
+  }
+
   @Test
   void shouldCreatePost() {
     var postId = UUID.randomUUID().toString();
     var expectedPost = buildPostDto(postId, TEST_TITLE, TEST_CONTENT, TEST_USERNAME);
     when(postRepository.save(any(Post.class))).thenReturn(buildPost(postId, TEST_TITLE, TEST_CONTENT, TEST_USERNAME));
 
-    var createPost = postService.createPost(buildPostDto(TEST_TITLE, TEST_CONTENT));
+    var createdPost = postService.createPost(buildPostDto(TEST_TITLE, TEST_CONTENT));
 
-    assertThat(createPost).isEqualTo(expectedPost);
+    assertThat(createdPost).isEqualTo(expectedPost);
     verify(postMapper).toDto(any(Post.class));
     verify(postMapper).toPost(any(PostDto.class));
   }
@@ -113,6 +119,7 @@ public class PostServiceImplTest {
     doNothing().when(postRepository).deleteById(eq(postId));
 
     postService.deletePost(postId);
+
     verifyNoMoreInteractions(postRepository);
     verifyNoInteractions(postMapper);
   }
@@ -138,7 +145,6 @@ public class PostServiceImplTest {
     var expectedPost = buildPostDto(postId, TEST_TITLE, TEST_CONTENT, TEST_USERNAME);
     blogSecurityUtils.when(BlogSecurityUtils::getUserRoleFromSecurityContext)
         .thenReturn(UserRole.PUBLISHER);
-
     when(postRepository.findAllByAuthorUsername(eq(TEST_USERNAME), any(Pageable.class)))
         .thenReturn(new PageImpl<>(singletonList(storedPost)));
 
@@ -156,7 +162,6 @@ public class PostServiceImplTest {
     var expectedPost = buildPostDto(postId, TEST_TITLE, TEST_CONTENT, TEST_USERNAME);
     blogSecurityUtils.when(BlogSecurityUtils::getUserRoleFromSecurityContext)
         .thenReturn(UserRole.ADMIN);
-
     when(postRepository.findAll(any(Pageable.class))).thenReturn(new PageImpl<>(singletonList(storedPost)));
 
     var allPosts = postService.getAllPosts(Pageable.ofSize(10));
