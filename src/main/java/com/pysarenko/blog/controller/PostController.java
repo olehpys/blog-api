@@ -33,7 +33,7 @@ public class PostController {
 
   @PutMapping("/{id}")
   PostDto editPost(@PathVariable String id, @RequestBody PostDto post) {
-    return postService.editPost(id, post);
+    return postService.updatePost(id, post);
   }
 
   @GetMapping("/{id}")

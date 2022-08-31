@@ -8,7 +8,7 @@ public interface PostService {
 
   PostDto createPost(PostDto post);
 
-  PostDto editPost(String id, PostDto post);
+  PostDto updatePost(String id, PostDto post);
 
   void deletePost(String id);
 

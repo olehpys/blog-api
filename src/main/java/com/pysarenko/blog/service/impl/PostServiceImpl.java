@@ -5,8 +5,8 @@ import static com.pysarenko.blog.security.utils.BlogSecurityUtils.getUsernameFro
 import static com.pysarenko.blog.security.utils.BlogSecurityUtils.isAdmin;
 
 import com.pysarenko.blog.dto.PostDto;
-import com.pysarenko.blog.mapper.PostMapper;
 import com.pysarenko.blog.entity.Post;
+import com.pysarenko.blog.mapper.PostMapper;
 import com.pysarenko.blog.repository.PostRepository;
 import com.pysarenko.blog.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +38,7 @@ public class PostServiceImpl implements PostService {
 
   @Override
   @Transactional
-  public PostDto editPost(String id, PostDto post) {
+  public PostDto updatePost(String id, PostDto post) {
     var storedPost = postRepository.findById(id)
         .filter(this::userHasPermission)
         .orElseThrow();
